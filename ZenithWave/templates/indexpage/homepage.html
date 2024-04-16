@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Zenith Wave</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'indexpage/css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/9d4aef4753.css" crossorigin="anonymous">
+    <link rel="canonical" href="https://codepen.io/mehmetmert/pen/zYZRKZ">
+    <script src="https://kit.fontawesome.com/9d4aef4753.js" crossorigin="anonymous"></script>
+
+
+    <style>
+
+      /* //////////////////////////////////////////////////////////////// */
+/* CSS Document */
+
+/* ---------- GENERAL ---------- */
+
+a { text-decoration: none; }
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+h4, h5 {
+	line-height: 1.5em;
+	margin: 0;
+}
+
+hr {
+	background: #e9e9e9;
+    border: 0;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 1px;
+    margin: 0;
+    min-height: 1px;
+}
+
+img {
+    border: 0;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+input {
+	border: 0;
+	color: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: normal;
+    margin: 0;
+}
+
+p { margin: 0; }
+
+.clearfix { zoom: 1; } /* For IE 6/7 */
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after { clear: both; }
+
+/* ---------- LIVE-CHAT ---------- */
+
+#live-chat {
+	bottom: 0;
+	font-size: 12px;
+	right: 24px;
+	position: fixed;
+	width: 300px;
+}
+
+#live-chat header {
+	background: #293239;
+	border-radius: 5px 5px 0 0;
+	color: #fff;
+	cursor: pointer;
+	padding: 16px 24px;
+}
+
+#live-chat h4:before {
+	background: #1a8a34;
+	border-radius: 50%;
+	content: "";
+	display: inline-block;
+	height: 8px;
+	margin: 0 8px 0 0;
+	width: 8px;
+}
+
+#live-chat h4 {
+	font-size: 12px;
+}
+
+#live-chat h5 {
+	font-size: 10px;
+}
+
+#live-chat form {
+	padding: 24px;
+}
+
+#live-chat input[type="text"] {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 8px;
+	outline: none;
+	width: 234px;
+}
+
+.chat-message-counter {
+	background: #e62727;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	display: none;
+	font-size: 12px;
+	font-weight: bold;
+	height: 28px;
+	left: 0;
+	line-height: 28px;
+	margin: -15px 0 0 -15px;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 28px;
+}
+
+.chat-close {
+	background: #1b2126;
+	border-radius: 50%;
+	color: #fff;
+	display: block;
+	float: right;
+	font-size: 10px;
+	height: 16px;
+	line-height: 16px;
+	margin: 2px 0 0 0;
+	text-align: center;
+	width: 16px;
+}
+
+.chat {
+	background: #fff;
+}
+
+.chat-history {
+	height: 252px;
+	padding: 8px 24px;
+	overflow-y: scroll;
+}
+
+.chat-message {
+	margin: 16px 0;
+}
+
+.chat-message img {
+	border-radius: 50%;
+	float: left;
+}
+
+.chat-message-content {
+	margin-left: 56px;
+}
+
+.chat-time {
+	float: right;
+	font-size: 10px;
+}
+
+.chat-feedback {
+	font-style: italic;	
+	margin: 0 0 0 80px;
+}
+
+
+/* //////////////////////////////////////////////////////////////// */
+    </style>
+    
+</head>
+<body>
+   <div class="sidebar">
+        
+        <div class="logo">
+            <a href="#"><img src="{{url_for('static', filename = 'indexpage/images/logo.png')}}" alt="logo"></a>
+        </div>
+        <div class="navigation" id="upper">
+            <ul>
+                <li>
+                    <a href="{{ url_for('homeMain') }}">
+                        <i class="fa-solid fa-home"></i>
+                        <span>Home</span>
+                    </a> 
+                </li>
+
+                <li>
+                    <a href="{{ url_for('videohome') }}">
+                        <i class="fa fa-search"></i>
+                        <span>Search</span>
+                    </a> 
+                </li>
+
+                <li>
+                    <a href="{{ url_for('dash') }}">
+                        <i class="fa fas fa-book"></i>
+                        <span>Your library</span>
+                    </a> 
+                </li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa fas fa-plus-square"></i>
+                        <span>Create Playlist</span>
+                    </a> 
+                </li>
+
+                <li>
+                    <a href="{{ url_for('list') }}">
+                        <i class="fa fas fa-heart"></i>
+                        <span>Liked Podcasts</span>
+                    </a> 
+                </li>
+            </ul>
+        </div>
+
+        <div class="policies">
+            <ul>
+                <li><a href="#">Cookies</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="topbar">
+            <div class="prev-next-buttons">
+                <button type="button" class="fa fas fa-chevron-left"></button>
+                <button type="button" class="fa fas fa-chevron-right"></button>
+            </div>
+            <div class="navbar">
+                <ul>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Podcasts</a></li>
+                    <li><a href="{{ url_for('fileupload') }}">Upload</a></li>
+                    <li><a href="{{ url_for('chatpage') }}">ZenithAI</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+                <a href="{{ url_for('dash') }}"><button type="button">Dashboard</button></a>
+            </div>
+        </div>
+         
+
+        <div class="spotify-playlist">
+            <h2>Zenith Wave Playlists</h2>
+               <div class="list">
+                   <div class="item">
+                       <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList10.png')}}" alt=""></a>
+                       <div class="play">
+                          <span class="fa fa-play"></span>
+                       </div>
+                          <h4>Sour</h4>
+                           <p>Song • Olivia Rodrigo</p>
+
+                    </div>
+
+
+
+                    <div class="item">
+                        <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList11.png')}}" alt=""></a>
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Lover</h4>
+                            <p>Song • Taylor Swift </p>
+ 
+                     </div>
+
+
+
+                     <div class="item">
+                        <a href="{{ url_for('list') }}"></a><img src="{{url_for('static', filename = 'indexpage/images/playList12.png')}}" alt="">
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits</h4>
+                            <p>Kick back to the best new and recent.... </p>
+ 
+                     </div>
+                     
+                     <div class="item">
+                        <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList14.png')}}" alt=""></a>
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits of all times</h4>
+                            <p>Kick back to the best new and recent.... </p>
+ 
+                     </div>
+
+
+
+                     <div class="item">
+                        <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playlist15.png')}}" alt=""></a>
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits</h4>
+                            <p>Kick back to the best new and recent.... </p>
+ 
+                     </div>
+
+
+
+                     <div class="item">
+                        <a href="{{ url_for('list') }}"></a><img src="{{url_for('static', filename = 'indexpage/images/playList16.png')}}" alt="">
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits</h4>
+                            <p>Kick back to the best new and recent.... </p>
+ 
+                     </div>
+
+
+
+                     <div class="item">
+                        <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList9.png')}}" alt=""></a>
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits</h4>
+                            <p>2021 • Billie Eilish </p>
+ 
+                     </div>
+
+
+                     
+                </div>
+        </div>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+<div class="spotify-playlist">
+    <h2>Chill</h2>
+       <div class="list">
+           <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/Group25.png')}}" alt=""></a>
+               <div class="play">
+                  <span class="fa fa-play"></span>
+               </div>
+               <h4>Justice</h4>
+               <p>2021 • Justin Bieber </p>
+
+            </div>
+
+
+
+            <div class="item">
+                <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/image4.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>First Class</h4>
+                    <p>Song • Jack Harlow </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/jack.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits of 2021</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+             
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/2.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Punjabi 101</h4>
+                    <p>By Spotify </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/3.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Bollywood Blast</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/wishingWall.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Wishing Well</h4>
+                    <p>Juice WRLD</p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/opHit.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Blinding Lights</h4>
+                    <p> Song • The Weekend</p>
+
+             </div>
+
+
+             
+        </div>
+</div>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<div class="spotify-playlist">
+    <h2>Trending</h2>
+       <div class="list">
+           <div class="item">
+            <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList1.png')}}" alt=""></a>
+               <div class="play">
+                  <span class="fa fa-play"></span>
+               </div>
+                  <h4>Top Hits</h4>
+                   <p>Kick back to the best new and recent.... </p>
+
+            </div>
+
+
+
+            <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList2.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('list') }}"></a> <img src="{{url_for('static', filename = 'indexpage/imagesplayList3.png/')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+             
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList4.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList7.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList5.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('list') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList6.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+             
+        </div>
+</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div id="live-chat">
+		
+   <header class="clearfix">
+     
+     <a href="#" class="chat-close">x</a>
+ 
+     <h4>ZenithAI</h4>
+ 
+   </header>
+ 
+   <div class="chat">
+     
+     <div class="chat-history">
+ 
+     </div> <!-- end chat-history -->
+ 
+     <form id = "messageArea" >
+ 
+         
+         <input type="text" id = "text" name="msg" placeholder="Message..." required>
+         <!-- <input type="hidden"> -->
+         <button type="submit" id="send" class = "chat-submit"><i>Submit</i></button>
+     </form>
+ 
+   </div> <!-- end chat -->
+ 
+ </div> <!-- end live-chat -->
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+ 
+ </body>
+ </html>
+ 
+     <script id="rendered-js" >
+ (function () {
+ 
+ $('#live-chat header').on('click', function () {
+ 
+   $('.chat').slideToggle(300, 'swing');
+   $('.chat-message-counter').fadeToggle(300, 'swing');
+ 
+ });
+ 
+ $('.chat-close').on('click', function (e) {
+ 
+   e.preventDefault();
+   $('#live-chat').fadeOut(300);
+ 
+ });
+ 
+ })();
+ //# sourceURL=pen.js
+   </script>
+   <script>
+      $(document).ready(function(){
+         $("#messageArea").on("submit", function(event){
+            const date = new Date();
+            const hour = date.getHours();
+            const minute = date.getMinutes();
+            const str_time = hour+":"+minute;
+            var rawText = $("#text").val(); 
+
+            var userHtml = '<div class="chat-message clearfix"><img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+str_time+'</span><h5>Pabitra</h5><p>'+ rawText +'</p></div></div><hr>'
+            $("#text").val("");
+            $(".chat-history").append(userHtml);
+
+            $.ajax({
+               data:{
+                  msg: rawText,
+               },
+               type:"POST",
+               url: "/get",
+            }).done(function(data){
+               var botHtml = '<div class="chat-message clearfix"><img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32" height="32"><div class="chat-message-content clearfix"><span class="chat-time">'+str_time+'</span><h5>Zenith AI</h5><p>'+ data +'</p></div></div><hr>'
+               $(".chat-history").append($.parseHTML(botHtml));
+
+            });
+            event.preventDefault();
+         });
+      });
+   </script>
+ 
+   <!-- //////////////////////////////////////////////////////////////// -->
+
+    
+   
+</body>
+</html>

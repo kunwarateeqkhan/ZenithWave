@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Zenith Wave</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'indexpage/css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/9d4aef4753.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/9d4aef4753.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+   <div class="sidebar">
+        
+        <div class="logo">
+            <a href="#"><img src="{{url_for('static', filename = 'indexpage/images/logo.png')}}" alt="logo"></a>
+        </div>
+        <div class="navigation" id="upper">
+            <ul>
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        <i class="fa-solid fa-home"></i>
+                        <span>Home</span>
+                    </a> 
+                </li>
+
+                <li>
+                    <a href="signin">
+                        <i class="fa fa-search"></i>
+                        <span>Search</span>
+                    </a> 
+                </li>
+
+                <li>
+                    <a href="{{ url_for('signin') }}">
+                        <i class="fa fas fa-book"></i>
+                        <span>Your library</span>
+                    </a> 
+                </li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="signin">
+                        <i class="fa fas fa-plus-square"></i>
+                        <span>Create Playlist</span>
+                    </a> 
+                </li>
+
+                <li>
+                    <a href="{{ url_for('signin') }}">
+                        <i class="fa fas fa-heart"></i>
+                        <span>Liked Podcasts</span>
+                    </a> 
+                </li>
+            </ul>
+        </div>
+
+        <div class="policies">
+            <ul>
+                <li><a href="#">Cookies</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="topbar">
+            <div class="prev-next-buttons">
+                <button type="button" class="fa fas fa-chevron-left"></button>
+                <button type="button" class="fa fas fa-chevron-right"></button>
+            </div>
+            <div class="navbar">
+                <ul>
+                    <li><a href="signin">Premium</a></li>
+                    <li><a href="signin">Support</a></li>
+                    <li><a href="signin">Download</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                </ul>
+                <a href="{{ url_for('signin') }}"><button type="button">Login In</button></a>
+            </div>
+        </div>
+         
+
+        <div class="spotify-playlist">
+            <h2>Zenith Wave Playlists</h2>
+               <div class="list">
+                   <div class="item">
+                       <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList10.png')}}" alt=""></a>
+                       <div class="play">
+                          <span class="fa fa-play"></span>
+                       </div>
+                          <h4>Sour</h4>
+                           <p>Song • Olivia Rodrigo</p>
+
+                    </div>
+
+
+
+                    <div class="item">
+                        <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList11.png')}}" alt=""></a>
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Lover</h4>
+                            <p>Song • Taylor Swift </p>
+ 
+                     </div>
+
+
+
+                     <div class="item">
+                        <a href="{{ url_for('signin') }}"></a><img src="{{url_for('static', filename = 'indexpage/images/playList12.png')}}" alt="">
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits</h4>
+                            <p>Kick back to the best new and recent.... </p>
+ 
+                     </div>
+                     
+                     <div class="item">
+                        <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList14.png')}}" alt=""></a>
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits of all times</h4>
+                            <p>Kick back to the best new and recent.... </p>
+ 
+                     </div>
+
+
+
+                     <div class="item">
+                        <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playlist15.png')}}" alt=""></a>
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits</h4>
+                            <p>Kick back to the best new and recent.... </p>
+ 
+                     </div>
+
+
+
+                     <div class="item">
+                        <a href="{{ url_for('signin') }}"></a><img src="{{url_for('static', filename = 'indexpage/images/playList16.png')}}" alt="">
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits</h4>
+                            <p>Kick back to the best new and recent.... </p>
+ 
+                     </div>
+
+
+
+                     <div class="item">
+                        <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList9.png')}}" alt=""></a>
+                        <div class="play">
+                           <span class="fa fa-play"></span>
+                        </div>
+                           <h4>Top Hits</h4>
+                            <p>2021 • Billie Eilish </p>
+ 
+                     </div>
+
+
+                     
+                </div>
+        </div>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+<div class="spotify-playlist">
+    <h2>Chill</h2>
+       <div class="list">
+           <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/Group25.png')}}" alt=""></a>
+               <div class="play">
+                  <span class="fa fa-play"></span>
+               </div>
+               <h4>Justice</h4>
+               <p>2021 • Justin Bieber </p>
+
+            </div>
+
+
+
+            <div class="item">
+                <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/image4.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>First Class</h4>
+                    <p>Song • Jack Harlow </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/jack.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits of 2021</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+             
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/2.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Punjabi 101</h4>
+                    <p>By Spotify </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/3.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Bollywood Blast</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/wishingWall.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Wishing Well</h4>
+                    <p>Juice WRLD</p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/opHit.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Blinding Lights</h4>
+                    <p> Song • The Weekend</p>
+
+             </div>
+
+
+             
+        </div>
+</div>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<div class="spotify-playlist">
+    <h2>Trending</h2>
+       <div class="list">
+           <div class="item">
+            <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList1.png')}}" alt=""></a>
+               <div class="play">
+                  <span class="fa fa-play"></span>
+               </div>
+                  <h4>Top Hits</h4>
+                   <p>Kick back to the best new and recent.... </p>
+
+            </div>
+
+
+
+            <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList2.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('signin') }}"></a> <img src="{{url_for('static', filename = 'indexpage/imagesplayList3.png/')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+             
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList4.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList7.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList5.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+
+             <div class="item">
+               <a href="{{ url_for('signin') }}"><img src="{{url_for('static', filename = 'indexpage/images/playList6.png')}}" alt=""></a>
+                <div class="play">
+                   <span class="fa fa-play"></span>
+                </div>
+                   <h4>Top Hits</h4>
+                    <p>Kick back to the best new and recent.... </p>
+
+             </div>
+
+
+             
+        </div>
+</div>
+
+    
+   
+</body>
+</html>
